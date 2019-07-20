@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package routeguide;
+
+service RouteGuide {
+  rpc NumberToNumber(Number) returns (NumArray) {}
+  rpc BidiNumbers(stream Number) returns (stream Number) {}
+  rpc StreamNumbers(Number) returns (stream NumArray) {}
+}
+
+service Streaming {
+  rpc BidiTwice(stream Number) returns (stream Number) {}
+}
+
+message Number { 
+  int32 number = 1;
+}
+message NumArray { repeated uint64 numbers = 1; }
